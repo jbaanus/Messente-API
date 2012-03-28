@@ -1,0 +1,28 @@
+About
+========================
+This is the official wrapper library for Messente SMS text messages sending API
+
+
+
+
+PHP
+========================
+Requirements
+---------------
+PHP curl module
+
+
+File structure
+---------------
+/php/messente.php - the Messente class that does all the heavylifting
+/php/example.php - Simple example how to use messente.php
+
+
+
+
+Changelog
+========================
+0.1 (28.03.2012)
+---------------
+Initial import of PHP wrapper
+Minimalistic example
