@@ -235,25 +235,40 @@ class Messente {
 	function get_error_message($code) {
 		switch ($code) {
 		case 'ERROR 101':
-			return 'Access is restricted, wrong credentials.';
+			return 'Access is restricted, wrong credentials. Check your username, password.';
 		case 'ERROR 102':
 			return 'Parameters are wrong or missing.';
+		case 'ERROR 103':
+			$ip = $this->__findMyIpAddress();
+			return 'Current IP address '.$ip.' is not allowed. Check API settings page in Messente.';
 		case 'ERROR 105':
-			return 'No such country or area code.';
+			return 'No such country or area code or invalid phone number format.';
 		case 'ERROR 106':
 			return 'Destination country is not supported.';
-		case 'FAILED 107':
+		case 'ERROR 107':
 			return 'Not enough credit on account.';
+		case 'ERROR 111':
+			return 'Sender parameter "from" is invalid or not allowed.';
+		case 'FAILED 208':
+			return 'Messente was unable to determine Account balance, try again.';
 		case 'FAILED 209':
 			return 'Server failure, try again.';
-		case 'FAILED 210':
-			return 'No DLR response information yet, try again.';
 		default:
 			return "Unknown error [$code]";
 		}
 	}
 
 
+	private function __findMyIpAddress(){
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
+		curl_setopt($ch, CURLOPT_URL, $this->messente_url.'send_sms/');
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+		$content = curl_exec($ch);
+		return trim($content);
+	}
 
 
 
