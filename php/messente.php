@@ -6,6 +6,8 @@ if (!function_exists('curl_init')) {
 
 class Messente {
 
+	public $version = '0.1.3';
+
 	function __construct($preferences) {
 		if (!isset($preferences['username'])) die('No username set');
 		if (!isset($preferences['password'])) die('No API key set');
@@ -31,7 +33,7 @@ class Messente {
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 20);
-		curl_setopt($this->ch, CURLOPT_USERAGENT, "Messente PHP API - curl");
+		curl_setopt($this->ch, CURLOPT_USERAGENT, "Messente PHP library v".$this->version." (curl)");
 		
 		// Fix for Squid proxy
 		// See http://www.php.net/manual/en/function.curl-setopt.php#106891 for more details
