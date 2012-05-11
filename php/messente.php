@@ -31,6 +31,7 @@ class Messente {
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 20);
+		curl_setopt($this->ch, CURLOPT_USERAGENT, "Messente PHP API - curl");
 		
 		// Fix for Squid proxy
 		// See http://www.php.net/manual/en/function.curl-setopt.php#106891 for more details
@@ -50,8 +51,23 @@ class Messente {
 
 		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'get_balance/');
 		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post_fields);
-
+		
 		$content = curl_exec($this->ch);
+		
+		// Check if cURL request was OK
+		if (curl_errno($this->ch)){
+		
+			return array(
+				'error'			=> true,
+				'error_code'	=> null,
+				'error_message'	=> 'cURL error: '.curl_error($this->ch),
+				'eur'			=> null,
+				'raw'			=> $content
+			);
+			
+		}
+
+		
 		$data = explode(' ', $content, 2);
 		
 		
@@ -169,8 +185,23 @@ class Messente {
 		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'send_sms/');
 		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post_fields);
 		$content = curl_exec($this->ch);
+		
+		
+		// Check if cURL request was OK
+		if (curl_errno($this->ch)){
+		
+			return array(
+				'error'			=> true,
+				'error_code'	=> null,
+				'error_message'	=> 'cURL error: '.curl_error($this->ch),
+				'sms_unique_id' => null,
+				'raw'			=> $content
+			);
+			
+		}
 
 		
+		// Split data to 3 sections: STATUS UNIQUE_MESSAGE_ID BLOB
 		$data = explode(' ', $content, 3);
 		
 		if (count($data) < 2) {
@@ -179,7 +210,7 @@ class Messente {
 				'error'			=> true,
 				'error_code'	=> null,
 				'error_message' => 'Invalid response from Messente',
-				'eur'			=> 0,
+				'sms_unique_id' => null,
 				'raw'			=> $content
 			);
 		
@@ -198,7 +229,7 @@ class Messente {
 		} else {
 
 			$error_message = $this->get_error_message($content);
-			$post_fields['url'] = $url;
+			$post_fields['url'] = $this->messente_url.'send_sms/';
 			$this->email_error($content, $error_message, $post_fields);
 
 			return array(
@@ -307,6 +338,7 @@ class Messente {
 				'error_message'	=> 'No DLR id specified.',
 				'error_code'	=> null,
 				'status'		=> null,
+				'raw'			=> null
 			);
 		}
 
@@ -321,8 +353,19 @@ class Messente {
 		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'get_dlr_response/');
 		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post_fields);
 		$content = curl_exec($this->ch);
-
-		if (substr($content,0,2) == 'OK') {
+		
+		// Check if cURL request was OK
+		if (curl_errno($this->ch)){
+		
+			return array(
+				'error'			=> true,
+				'error_code'	=> null,
+				'error_message'	=> 'cURL error: '.curl_error($this->ch),
+				'status'		=> null,
+				'raw'			=> $content
+			);
+			
+		} elseif (substr($content,0,2) == 'OK') {
 
 			$data = explode(' ', $content, 2);
 			return array(
@@ -330,6 +373,7 @@ class Messente {
 				'error_message' => null,
 				'error_code'	=> null,
 				'status'		=> $data[1],
+				'raw'			=> $content
 			);
 
 		} else {
@@ -338,10 +382,11 @@ class Messente {
 			$this->email_error($content, $error_message, array('request' => $request));
 
 			return array(
-				'error'   => true,
-				'error_code' => $content,
-				'error_message' => $error_message,
-				'status'  => null
+				'error'			=> true,
+				'error_code'	=> $content,
+				'error_message'	=> $error_message,
+				'status'		=> null,
+				'raw'			=> $content
 			);
 
 		}

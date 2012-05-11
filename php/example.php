@@ -73,7 +73,7 @@ if (!empty($_POST['get_dlr_response'])) {
 	
 		<h2>Check balance</h2>
 		<form method="post" action="example.php">
-			<input type="submit" name="get_balance" value="Get balance"
+			<input type="submit" name="get_balance" value="Get balance">
 		</form>
 		
 		<h2>Send SMS</h2>
@@ -81,14 +81,14 @@ if (!empty($_POST['get_dlr_response'])) {
 			<label>To:</label><input name="message[to]">
 			<label>Content:</label><textarea name="message[content]"></textarea>
 			<br/>
-			<input type="submit" name="send_sms" value="Send SMS"
+			<input type="submit" name="send_sms" value="Send SMS">
 		</form>
 		
 		<h2>Get DLR</h2>
 		<form method="post" action="example.php">
 			<label>SMS unique ID:</label><input name="sms_unique_id">
 			<br/>
-			<input type="submit" name="get_dlr_response" value="Get DLR status"
+			<input type="submit" name="get_dlr_response" value="Get DLR status">
 		</form>
 </body>
 </html>
