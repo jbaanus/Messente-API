@@ -31,6 +31,9 @@ class Messente {
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 20);
+		
+		// Fix for Squid proxy
+		// See http://www.php.net/manual/en/function.curl-setopt.php#106891 for more details
 		curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("Expect:"));
 
 	}
