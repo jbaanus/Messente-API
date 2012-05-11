@@ -31,6 +31,7 @@ class Messente {
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($this->ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($this->ch, CURLOPT_CONNECTTIMEOUT, 20);
+		curl_setopt($this->ch, CURLOPT_HTTPHEADER, array("Expect:"));
 
 	}
 
