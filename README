@@ -22,12 +22,19 @@ File structure
 
 Changelog
 ========================
+
+0.1.2 (11.05.2012)
+---------------
+* Added cURL error validation - big thanks to Priit Perna
+* Fixed example HTML code
+
+
 0.1.1 (11.05.2012)
 ---------------
-Fixed an error with Squid proxy, see http://www.php.net/manual/en/function.curl-setopt.php#106891 for more details.
+* Fixed an error with Squid proxy, see http://www.php.net/manual/en/function.curl-setopt.php#106891 for more details.
 
 
 0.1 (28.03.2012)
 ---------------
-Initial import of PHP wrapper
-Minimalistic example
+* Initial import of PHP wrapper
+* Minimalistic example
