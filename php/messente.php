@@ -6,7 +6,7 @@ if (!function_exists('curl_init')) {
 
 class Messente {
 
-	public $version = '0.1.3';
+	public $version = '0.1.4';
 
 	function __construct($preferences) {
 		if (!isset($preferences['username'])) die('No username set');
@@ -301,9 +301,13 @@ class Messente {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 20);
-		curl_setopt($ch, CURLOPT_URL, $this->messente_url.'send_sms/');
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+		curl_setopt($ch, CURLOPT_URL, 'http://automation.whatismyip.com/n09230945.asp');
 		$content = curl_exec($ch);
+		
+		if (curl_errno($ch)) {
+			return 'Error: '.curl_error($ch);
+		}
+		
 		return trim($content);
 	}
 
