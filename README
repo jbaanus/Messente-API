@@ -23,9 +23,10 @@ File structure
 Changelog
 ========================
 
-(04.06.2012)
+0.1.5 (04.06.2012)
 ---------------
 * Add dlr-url parameter to API Example
+* Added global "dlr-url" value for constructor, that can be overriden with send_sms() "dlr-url" paramter.
 
 
 0.1.4 (29.05.2012)

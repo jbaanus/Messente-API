@@ -6,16 +6,17 @@ if (!function_exists('curl_init')) {
 
 class Messente {
 
-	public $version = '0.1.4';
+	public $version = '0.1.5';
 
 	function __construct($preferences) {
 		if (!isset($preferences['username'])) die('No username set');
 		if (!isset($preferences['password'])) die('No API key set');
 
 		$default_preferences = array(
-			'debug'   => false,
+			'debug'		=> false,
 			'error_email' => '',
-			'secure'  => false
+			'secure'	=> false,
+			'dlr-url'	=> ''
 		);
 
 		$preferences = array_merge($default_preferences, $preferences);
@@ -160,6 +161,7 @@ class Messente {
 		$post_fields = array(
 			'username'	=> $this->preferences['username'],
 			'password'	=> $this->preferences['password'],
+			'dlr-url'	=> $this->preferences['dlr-url'],
 			'text'		=> $message['content'],
 			'to'		=> $to
 		);
