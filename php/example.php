@@ -80,6 +80,7 @@ if (!empty($_POST['get_dlr_response'])) {
 		<form method="post" action="example.php">
 			<label>To:</label><input name="message[to]">
 			<label>Content:</label><textarea name="message[content]"></textarea>
+			<label>DLR URL:</label><input name="message[dlr-url]">
 			<br/>
 			<input type="submit" name="send_sms" value="Send SMS">
 		</form>

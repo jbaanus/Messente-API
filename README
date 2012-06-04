@@ -23,6 +23,11 @@ File structure
 Changelog
 ========================
 
+(04.06.2012)
+---------------
+* Add dlr-url parameter to API Example
+
+
 0.1.4 (29.05.2012)
 ---------------
 * Fixed IP address detection
