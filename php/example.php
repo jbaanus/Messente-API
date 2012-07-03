@@ -59,6 +59,18 @@ if (!empty($_POST['get_dlr_response'])) {
 		<?php if (!empty($result)): ?>
 
 			<div>
+				<? if (isset($message) && !empty($message)): ?>
+					<b>Query parameters:</b><br/>
+					<code>
+						<?php
+							foreach ($message as $key => $value) {
+								echo $key.': '.$value."<br/>\n";
+							}
+						?>
+					</code>
+					<br/>
+				<? endif; ?>
+				
 				<b>Messente's response to the query:</b><br/>
 				<code>
 					<?php
@@ -78,6 +90,7 @@ if (!empty($_POST['get_dlr_response'])) {
 		
 		<h2>Send SMS</h2>
 		<form method="post" action="example.php">
+			<label>From:</label><input name="message[from]">
 			<label>To:</label><input name="message[to]">
 			<label>Content:</label><textarea name="message[content]"></textarea>
 			<label>DLR URL:</label><input name="message[dlr-url]">

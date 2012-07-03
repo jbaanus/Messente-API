@@ -1,6 +1,10 @@
 Changelog
 ========================
 
+(03.07.2012)
+---------------
+* Updated example with "From:" field.
+
 0.1.5 (04.06.2012)
 ---------------
 * Add dlr-url parameter to API Example
