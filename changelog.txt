@@ -1,9 +1,13 @@
 Changelog
 ========================
 
-(03.07.2012)
+0.1.6 (03.07.2012)
 ---------------
 * Updated example with "From:" field.
+* Add "Disable autoconvert" to example.
+* Changed from POST to GET requests for easier debugging
+* Fixed "autoconvert" parameter (was incorrectly "autocorrect")
+
 
 0.1.5 (04.06.2012)
 ---------------

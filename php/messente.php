@@ -6,7 +6,7 @@ if (!function_exists('curl_init')) {
 
 class Messente {
 
-	public $version = '0.1.5';
+	public $version = '0.1.6';
 
 	function __construct($preferences) {
 		if (!isset($preferences['username'])) die('No username set');
@@ -52,8 +52,7 @@ class Messente {
 			'password' => $this->preferences['password']
 		);
 
-		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'get_balance/');
-		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post_fields);
+		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'get_balance/?'.http_build_query($post_fields));
 		
 		$content = curl_exec($this->ch);
 		
@@ -182,12 +181,11 @@ class Messente {
 			$post_fields['dlr-url'] = $message['dlr-url'];
 		}
 
-		if (isset($message['autocorrect']) && !empty($message['autocorrect'])) {
-			$post_fields['autocorrect'] = $message['autocorrect'];
+		if (isset($message['autoconvert']) && !empty($message['autoconvert'])) {
+			$post_fields['autoconvert'] = $message['autoconvert'];
 		}
 
-		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'send_sms/');
-		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post_fields);
+		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'send_sms/?'.http_build_query($post_fields));
 		$content = curl_exec($this->ch);
 		
 		
@@ -358,8 +356,7 @@ class Messente {
 		);
 
 
-		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'get_dlr_response/');
-		curl_setopt($this->ch, CURLOPT_POSTFIELDS, $post_fields);
+		curl_setopt($this->ch, CURLOPT_URL, $this->messente_url.'get_dlr_response/?'.http_build_query($post_fields));
 		$content = curl_exec($this->ch);
 		
 		// Check if cURL request was OK

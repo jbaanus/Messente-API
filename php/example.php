@@ -94,6 +94,8 @@ if (!empty($_POST['get_dlr_response'])) {
 			<label>To:</label><input name="message[to]">
 			<label>Content:</label><textarea name="message[content]"></textarea>
 			<label>DLR URL:</label><input name="message[dlr-url]">
+			<label>Disable autoconvert:</label>
+			<input name="message[autoconvert]" value="disabled" checked="checked" type="checkbox">
 			<br/>
 			<input type="submit" name="send_sms" value="Send SMS">
 		</form>
