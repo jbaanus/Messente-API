@@ -12,10 +12,10 @@ require_once('messente.php');
 // First register an account and activate sender, then you can activate your API
 // To determine your IP address, use http://www.whatismyip.com/ or other similar service
 $preferences = array(
-	'username'		=> '13104b204b9005c30717f234ca5ad3a2',
-	'password'		=> '2b561bf5eba31d75e2dc77d930c5b9b3',
+	'username'		=> 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+	'password'		=> 'yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy',
 	'debug'			=> true,		// No E-mail is sent when debug mode is on! Disable this for live release.
-	'error_email'	=> 'jbaanus@gmail.com',			// Current API administrator e-mail that gets e-mail when something gets really wrong
+	'error_email'	=> ''			// Current API administrator e-mail that gets e-mail when something gets really wrong	
 );
 
 
