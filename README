@@ -16,3 +16,14 @@ File structure
 ---------------
 /php/messente.php - the Messente class that does all the heavylifting
 /php/example.php - Simple example how to use messente.php
+
+
+Bash
+========================
+Requirements
+---------------
+curl
+
+Example usage
+---------------
+$ bash sendSMS.sh 4463773683 "This is a sample text message"
