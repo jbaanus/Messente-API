@@ -1,6 +1,11 @@
 Changelog
 ========================
 
+02.11.2012
+---------------
+* Added another example - example2.php
+
+
 0.1.6 (03.07.2012)
 ---------------
 * Updated example with "From:" field.
