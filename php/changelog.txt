@@ -1,9 +1,14 @@
 Changelog
 ========================
 
-02.11.2012
+0.1.7 (10.2013)
 ---------------
-* Added another example - example2.php
+* More refined examples (moved to examples subfolder)
+* Include cURL version in the User Agent header
+* Internal cleanups
+* Use backup server when main API endpoint is failing
+* Added missing error code descriptions
+* New function "get_country_price()" to ask for country-specific prices
 
 
 0.1.6 (03.07.2012)
