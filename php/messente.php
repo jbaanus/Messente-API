@@ -12,7 +12,7 @@ if (!function_exists('curl_init')) {
 
 class Messente {
 
-	public $version = '0.1.7';
+	public $version = '0.1.8';
 	private $use_backup_route = false;
 
 	function __construct($preferences = array()) {
@@ -332,6 +332,8 @@ class Messente {
 			return 'Not enough credit on account.';
 		case 'ERROR 111':
 			return 'Sender parameter "from" is invalid or not allowed.';
+		case 'FAILED 102':
+			return 'No delivery report yet, try again in 5 seconds';
 		case 'FAILED 209':
 			return 'Server failure, try again.';
 		default:
