@@ -1,6 +1,11 @@
 Changelog
 ========================
 
+0.1.9 (24.10.2018)
+---------------
+Fixed error description for "ERROR 107"
+
+
 0.1.8 (05.10.2016)
 ---------------
 Added missing error message for response "FAILED 102"

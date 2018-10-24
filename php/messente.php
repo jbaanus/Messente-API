@@ -12,7 +12,7 @@ if (!function_exists('curl_init')) {
 
 class Messente {
 
-	public $version = '0.1.8';
+	public $version = '0.1.9';
 	private $use_backup_route = false;
 
 	function __construct($preferences = array()) {
