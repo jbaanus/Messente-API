@@ -329,7 +329,7 @@ class Messente {
 		case 'ERROR 106':
 			return 'Destination country is not supported.';
 		case 'ERROR 107':
-			return 'Not enough credit on account.';
+			return 'Could not find message with this MessageID.';
 		case 'ERROR 111':
 			return 'Sender parameter "from" is invalid or not allowed.';
 		case 'FAILED 102':
